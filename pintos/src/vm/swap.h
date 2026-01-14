@@ -1,0 +1,10 @@
+#include "threads/malloc.h"
+#include "threads/vaddr.h"
+#include "devices/block.h"
+#include "threads/synch.h"
+
+#include "filesys/file.h"
+#include "threads/thread.h"
+#include "page.h"
+#include "bitmap.h"
+#include "hash.h"

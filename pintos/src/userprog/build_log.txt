@@ -1,0 +1,238 @@
+mkdir -p build/devices
+mkdir -p build/filesys
+mkdir -p build/lib
+mkdir -p build/lib/kernel
+mkdir -p build/lib/user
+mkdir -p build/tests/filesys/base
+mkdir -p build/tests/userprog
+mkdir -p build/tests/userprog/no-vm
+mkdir -p build/threads
+mkdir -p build/userprog
+cp ../Makefile.build build/Makefile
+cd build && make all
+make[1]: Entering directory '/sogang/under/cse20201706/pintos/src/userprog/build'
+make[1]: Warning: File 'Makefile' has modification time 25 s in the future
+gcc -m32 -E -nostdinc -I../.. -I../../lib -I../../lib/kernel -P ../../threads/kernel.lds.S > threads/kernel.lds.s
+gcc -m32 -c ../../threads/start.S -o threads/start.o -Wa,--gstabs -nostdinc -I../.. -I../../lib -I../../lib/kernel -DUSERPROG -DFILESYS -MMD -MF threads/start.d
+gcc -m32 -c ../../threads/init.c -o threads/init.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF threads/init.d
+gcc -m32 -c ../../threads/thread.c -o threads/thread.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF threads/thread.d
+gcc -m32 -c ../../threads/switch.S -o threads/switch.o -Wa,--gstabs -nostdinc -I../.. -I../../lib -I../../lib/kernel -DUSERPROG -DFILESYS -MMD -MF threads/switch.d
+gcc -m32 -c ../../threads/interrupt.c -o threads/interrupt.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF threads/interrupt.d
+gcc -m32 -c ../../threads/intr-stubs.S -o threads/intr-stubs.o -Wa,--gstabs -nostdinc -I../.. -I../../lib -I../../lib/kernel -DUSERPROG -DFILESYS -MMD -MF threads/intr-stubs.d
+gcc -m32 -c ../../threads/synch.c -o threads/synch.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF threads/synch.d
+gcc -m32 -c ../../threads/palloc.c -o threads/palloc.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF threads/palloc.d
+gcc -m32 -c ../../threads/malloc.c -o threads/malloc.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF threads/malloc.d
+gcc -m32 -c ../../devices/pit.c -o devices/pit.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF devices/pit.d
+gcc -m32 -c ../../devices/timer.c -o devices/timer.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF devices/timer.d
+gcc -m32 -c ../../devices/kbd.c -o devices/kbd.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF devices/kbd.d
+gcc -m32 -c ../../devices/vga.c -o devices/vga.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF devices/vga.d
+gcc -m32 -c ../../devices/serial.c -o devices/serial.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF devices/serial.d
+gcc -m32 -c ../../devices/block.c -o devices/block.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF devices/block.d
+gcc -m32 -c ../../devices/partition.c -o devices/partition.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF devices/partition.d
+gcc -m32 -c ../../devices/ide.c -o devices/ide.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF devices/ide.d
+gcc -m32 -c ../../devices/input.c -o devices/input.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF devices/input.d
+gcc -m32 -c ../../devices/intq.c -o devices/intq.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF devices/intq.d
+gcc -m32 -c ../../devices/rtc.c -o devices/rtc.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF devices/rtc.d
+gcc -m32 -c ../../devices/shutdown.c -o devices/shutdown.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF devices/shutdown.d
+gcc -m32 -c ../../devices/speaker.c -o devices/speaker.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF devices/speaker.d
+gcc -m32 -c ../../lib/debug.c -o lib/debug.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF lib/debug.d
+../../lib/debug.c: In function ‘debug_backtrace’:
+../../lib/debug.c:19:16: warning: calling ‘__builtin_frame_address’ with a nonzero argument is unsafe [-Wframe-address]
+   19 |   for (frame = __builtin_frame_address (1);
+      |                ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -m32 -c ../../lib/random.c -o lib/random.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF lib/random.d
+gcc -m32 -c ../../lib/stdio.c -o lib/stdio.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF lib/stdio.d
+gcc -m32 -c ../../lib/stdlib.c -o lib/stdlib.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF lib/stdlib.d
+gcc -m32 -c ../../lib/string.c -o lib/string.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF lib/string.d
+In file included from ../../lib/string.c:2:
+../../lib/string.c: In function ‘strchr’:
+../../lib/debug.h:32:12: warning: ‘nonnull’ argument ‘string’ compared to NULL [-Wnonnull-compare]
+   32 |         if (CONDITION) { } else {                               \
+      |            ^
+../../lib/string.c:117:3: note: in expansion of macro ‘ASSERT’
+  117 |   ASSERT (string != NULL);
+      |   ^~~~~~
+../../lib/string.c: In function ‘strlen’:
+../../lib/debug.h:32:12: warning: ‘nonnull’ argument ‘string’ compared to NULL [-Wnonnull-compare]
+   32 |         if (CONDITION) { } else {                               \
+      |            ^
+../../lib/string.c:297:3: note: in expansion of macro ‘ASSERT’
+  297 |   ASSERT (string != NULL);
+      |   ^~~~~~
+gcc -m32 -c ../../lib/arithmetic.c -o lib/arithmetic.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF lib/arithmetic.d
+gcc -m32 -c ../../lib/ustar.c -o lib/ustar.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF lib/ustar.d
+gcc -m32 -c ../../lib/kernel/debug.c -o lib/kernel/debug.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF lib/kernel/debug.d
+../../lib/kernel/debug.c: In function ‘print_stacktrace’:
+../../lib/kernel/debug.c:82:15: warning: calling ‘__builtin_frame_address’ with a nonzero argument is unsafe [-Wframe-address]
+   82 |       frame = __builtin_frame_address (1);
+      |               ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+gcc -m32 -c ../../lib/kernel/list.c -o lib/kernel/list.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF lib/kernel/list.d
+gcc -m32 -c ../../lib/kernel/bitmap.c -o lib/kernel/bitmap.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF lib/kernel/bitmap.d
+gcc -m32 -c ../../lib/kernel/hash.c -o lib/kernel/hash.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF lib/kernel/hash.d
+gcc -m32 -c ../../lib/kernel/console.c -o lib/kernel/console.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF lib/kernel/console.d
+gcc -m32 -c ../../userprog/process.c -o userprog/process.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF userprog/process.d
+../../userprog/process.c:49:1: warning: no previous prototype for ‘fill_child’ [-Wmissing-prototypes]
+   49 | fill_child(struct thread *t, tid_t target_id) {
+      | ^~~~~~~~~~
+../../userprog/process.c: In function ‘fill_child’:
+../../userprog/process.c:50:43: warning: passing argument 1 of ‘list_begin’ from incompatible pointer type [-Wincompatible-pointer-types]
+   50 |     for (struct list_elem *e = list_begin(&t->child_list);
+      |                                           ^~~~~~~~~~~~~~
+      |                                           |
+      |                                           struct list_elem *
+In file included from ../../threads/thread.h:5,
+                 from ../../userprog/process.h:4,
+                 from ../../userprog/process.c:1:
+../../lib/kernel/list.h:128:31: note: expected ‘struct list *’ but argument is of type ‘struct list_elem *’
+  128 | struct list_elem *list_begin (struct list *);
+      |                               ^~~~~~~~~~~~~
+../../userprog/process.c:51:24: warning: passing argument 1 of ‘list_end’ from incompatible pointer type [-Wincompatible-pointer-types]
+   51 |          e != list_end(&t->child_list);
+      |                        ^~~~~~~~~~~~~~
+      |                        |
+      |                        struct list_elem *
+../../lib/kernel/list.h:130:29: note: expected ‘struct list *’ but argument is of type ‘struct list_elem *’
+  130 | struct list_elem *list_end (struct list *);
+      |                             ^~~~~~~~~~~~~
+../../userprog/process.c: In function ‘process_execute’:
+../../userprog/process.c:73:39: warning: implicit declaration of function ‘malloc’ [-Wimplicit-function-declaration]
+   73 |   struct child *new = (struct child *)malloc(sizeof(struct child));
+      |                                       ^~~~~~
+../../userprog/process.c:20:1: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+   19 | #include "threads/vaddr.h"
+  +++ |+#include <stdlib.h>
+   20 | 
+../../userprog/process.c:73:39: warning: incompatible implicit declaration of built-in function ‘malloc’ [-Wbuiltin-declaration-mismatch]
+   73 |   struct child *new = (struct child *)malloc(sizeof(struct child));
+      |                                       ^~~~~~
+../../userprog/process.c:73:39: note: include ‘<stdlib.h>’ or provide a declaration of ‘malloc’
+../../userprog/process.c:95:5: warning: implicit declaration of function ‘free’ [-Wimplicit-function-declaration]
+   95 |     free(new);
+      |     ^~~~
+../../userprog/process.c:95:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+../../userprog/process.c:95:5: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+../../userprog/process.c:95:5: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+../../userprog/process.c:98:20: warning: passing argument 1 of ‘list_push_back’ from incompatible pointer type [-Wincompatible-pointer-types]
+   98 |     list_push_back(&thread_current()->child_list, &new->elem);
+      |                    ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                    |
+      |                    struct list_elem *
+../../lib/kernel/list.h:144:22: note: expected ‘struct list *’ but argument is of type ‘struct list_elem *’
+  144 | void list_push_back (struct list *, struct list_elem *);
+      |                      ^~~~~~~~~~~~~
+../../userprog/process.c: In function ‘start_process’:
+../../userprog/process.c:128:5: warning: implicit declaration of function ‘debug_hex_dump’ [-Wimplicit-function-declaration]
+  128 |     debug_hex_dump("User Stack Before Jump", if_.esp);
+      |     ^~~~~~~~~~~~~~
+../../userprog/process.c: In function ‘process_wait’:
+../../userprog/process.c:177:3: warning: incompatible implicit declaration of built-in function ‘free’ [-Wbuiltin-declaration-mismatch]
+  177 |   free(child_);
+      |   ^~~~
+../../userprog/process.c:177:3: note: include ‘<stdlib.h>’ or provide a declaration of ‘free’
+../../userprog/process.c: In function ‘process_exit’:
+../../userprog/process.c:191:22: warning: initialization of ‘struct thread *’ from ‘tid_t’ {aka ‘int’} makes pointer from integer without a cast [-Wint-conversion]
+  191 |   struct thread *p = cur->parent;
+      |                      ^~~
+../../userprog/process.c:203:22: warning: passing argument 1 of ‘list_empty’ from incompatible pointer type [-Wincompatible-pointer-types]
+  203 |   while (!list_empty(&cur->child_list)) {
+      |                      ^~~~~~~~~~~~~~~~
+      |                      |
+      |                      struct list_elem *
+../../lib/kernel/list.h:157:18: note: expected ‘struct list *’ but argument is of type ‘struct list_elem *’
+  157 | bool list_empty (struct list *);
+      |                  ^~~~~~~~~~~~~
+../../userprog/process.c:204:24: warning: passing argument 1 of ‘list_pop_front’ from incompatible pointer type [-Wincompatible-pointer-types]
+  204 |     c = list_pop_front(&cur->child_list);
+      |                        ^~~~~~~~~~~~~~~~
+      |                        |
+      |                        struct list_elem *
+../../lib/kernel/list.h:148:35: note: expected ‘struct list *’ but argument is of type ‘struct list_elem *’
+  148 | struct list_elem *list_pop_front (struct list *);
+      |                                   ^~~~~~~~~~~~~
+../../userprog/process.c:205:19: warning: unused variable ‘child_info’ [-Wunused-variable]
+  205 |     struct child *child_info = list_entry(c, struct child, elem);
+      |                   ^~~~~~~~~~
+../../userprog/process.c: In function ‘load’:
+../../userprog/process.c:335:18: warning: passing argument 1 of ‘strtok_r’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+  335 |   tok = strtok_r(file_name, " ", &save);
+      |                  ^~~~~~~~~
+In file included from ../../userprog/process.c:7:
+../../lib/string.h:25:17: note: expected ‘char *’ but argument is of type ‘const char *’
+   25 | char *strtok_r (char *, const char *, char **);
+      |                 ^~~~~~
+gcc -m32 -c ../../userprog/pagedir.c -o userprog/pagedir.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF userprog/pagedir.d
+gcc -m32 -c ../../userprog/exception.c -o userprog/exception.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF userprog/exception.d
+gcc -m32 -c ../../userprog/syscall.c -o userprog/syscall.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF userprog/syscall.d
+../../userprog/syscall.c:9:1: warning: function declaration isn’t a prototype [-Wstrict-prototypes]
+    9 | static void syscall_halt();
+      | ^~~~~~
+../../userprog/syscall.c: In function ‘syscall_handler’:
+../../userprog/syscall.c:55:22: warning: implicit declaration of function ‘process_wait’ [-Wimplicit-function-declaration]
+   55 |             f->eax = process_wait((tid_t)pid);
+      |                      ^~~~~~~~~~~~
+../../userprog/syscall.c: In function ‘syscall_exec’:
+../../userprog/syscall.c:75:15: warning: passing argument 1 of ‘check_vaddr’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   75 |   check_vaddr(cmd,1);
+      |               ^~~
+../../userprog/syscall.c:14:31: note: expected ‘void *’ but argument is of type ‘const char *’
+   14 | static void check_vaddr(void *addr, unsigned s);
+      |                         ~~~~~~^~~~
+../../userprog/syscall.c:76:19: warning: implicit declaration of function ‘strlen’ [-Wimplicit-function-declaration]
+   76 |   check_vaddr(cmd,strlen(cmd)+1);
+      |                   ^~~~~~
+../../userprog/syscall.c:7:1: note: include ‘<string.h>’ or provide a declaration of ‘strlen’
+    6 | #include "threads/vaddr.h"
+  +++ |+#include <string.h>
+    7 | 
+../../userprog/syscall.c:76:19: warning: incompatible implicit declaration of built-in function ‘strlen’ [-Wbuiltin-declaration-mismatch]
+   76 |   check_vaddr(cmd,strlen(cmd)+1);
+      |                   ^~~~~~
+../../userprog/syscall.c:76:19: note: include ‘<string.h>’ or provide a declaration of ‘strlen’
+../../userprog/syscall.c:76:15: warning: passing argument 1 of ‘check_vaddr’ discards ‘const’ qualifier from pointer target type [-Wdiscarded-qualifiers]
+   76 |   check_vaddr(cmd,strlen(cmd)+1);
+      |               ^~~
+../../userprog/syscall.c:14:31: note: expected ‘void *’ but argument is of type ‘const char *’
+   14 | static void check_vaddr(void *addr, unsigned s);
+      |                         ~~~~~~^~~~
+../../userprog/syscall.c:77:10: warning: implicit declaration of function ‘process_execute’ [-Wimplicit-function-declaration]
+   77 |   return process_execute(cmd);
+      |          ^~~~~~~~~~~~~~~
+../../userprog/syscall.c: In function ‘syscall_read’:
+../../userprog/syscall.c:90:26: warning: implicit declaration of function ‘input_getc’ [-Wimplicit-function-declaration]
+   90 |                 *ptr++ = input_getc();
+      |                          ^~~~~~~~~~
+../../userprog/syscall.c: At top level:
+../../userprog/syscall.c:124:1: warning: ‘syscall_halt’ was used with no prototype before its definition [-Wmissing-prototypes]
+  124 | syscall_halt(void){
+      | ^~~~~~~~~~~~
+../../userprog/syscall.c: In function ‘syscall_halt’:
+../../userprog/syscall.c:125:3: warning: implicit declaration of function ‘shutdown_power_off’ [-Wimplicit-function-declaration]
+  125 |   shutdown_power_off();
+      |   ^~~~~~~~~~~~~~~~~~
+../../userprog/syscall.c: In function ‘check_vaddr’:
+../../userprog/syscall.c:151:16: warning: implicit declaration of function ‘pagedir_get_page’ [-Wimplicit-function-declaration]
+  151 |   void *page = pagedir_get_page(pd,addr);
+      |                ^~~~~~~~~~~~~~~~
+../../userprog/syscall.c:151:16: warning: initialization of ‘void *’ from ‘int’ makes pointer from integer without a cast [-Wint-conversion]
+../../userprog/syscall.c:157:36: warning: comparison between pointer and integer
+  157 |     if(pagedir_get_page(pd, addr_t)==NULL){
+      |                                    ^~
+../../userprog/syscall.c:151:9: warning: unused variable ‘page’ [-Wunused-variable]
+  151 |   void *page = pagedir_get_page(pd,addr);
+      |         ^~~~
+gcc -m32 -c ../../userprog/gdt.c -o userprog/gdt.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF userprog/gdt.d
+gcc -m32 -c ../../userprog/tss.c -o userprog/tss.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF userprog/tss.d
+gcc -m32 -c ../../filesys/filesys.c -o filesys/filesys.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF filesys/filesys.d
+gcc -m32 -c ../../filesys/free-map.c -o filesys/free-map.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF filesys/free-map.d
+gcc -m32 -c ../../filesys/file.c -o filesys/file.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF filesys/file.d
+gcc -m32 -c ../../filesys/directory.c -o filesys/directory.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF filesys/directory.d
+gcc -m32 -c ../../filesys/inode.c -o filesys/inode.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF filesys/inode.d
+gcc -m32 -c ../../filesys/fsutil.c -o filesys/fsutil.o -g -msoft-float -O -march=i686 -fno-stack-protector -nostdinc -I../.. -I../../lib -I../../lib/kernel -Wall -W -Wstrict-prototypes -Wmissing-prototypes -Wsystem-headers -DUSERPROG -DFILESYS -MMD -MF filesys/fsutil.d
+ld -melf_i386 -T threads/kernel.lds.s -o kernel.o threads/start.o threads/init.o threads/thread.o threads/switch.o threads/interrupt.o threads/intr-stubs.o threads/synch.o threads/palloc.o threads/malloc.o devices/pit.o devices/timer.o devices/kbd.o devices/vga.o devices/serial.o devices/block.o devices/partition.o devices/ide.o devices/input.o devices/intq.o devices/rtc.o devices/shutdown.o devices/speaker.o lib/debug.o lib/random.o lib/stdio.o lib/stdlib.o lib/string.o lib/arithmetic.o lib/ustar.o lib/kernel/debug.o lib/kernel/list.o lib/kernel/bitmap.o lib/kernel/hash.o lib/kernel/console.o userprog/process.o userprog/pagedir.o userprog/exception.o userprog/syscall.o userprog/gdt.o userprog/tss.o filesys/filesys.o filesys/free-map.o filesys/file.o filesys/directory.o filesys/inode.o filesys/fsutil.o
+ld: warning: threads/intr-stubs.o: missing .note.GNU-stack section implies executable stack
+ld: NOTE: This behaviour is deprecated and will be removed in a future version of the linker
+ld: userprog/process.o: in function `start_process':
+/sogang/under/cse20201706/pintos/src/userprog/build/../../userprog/process.c:128:(.text+0x5c8): undefined reference to `debug_hex_dump'
+make[1]: *** [Makefile:83: kernel.o] Error 1
+make[1]: Leaving directory '/sogang/under/cse20201706/pintos/src/userprog/build'
+make: *** [../Makefile.kernel:10: all] Error 2
